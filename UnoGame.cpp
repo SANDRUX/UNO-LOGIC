@@ -94,11 +94,15 @@ int main()
                 std::cout << client[i] << " ";
             }
 
-            for (int j = 0; j < playerNum; j++)
-            {
-                obj[j].print();
-                std::cout << std::endl;
-            }
+//            for (int j = 0; j < playerNum; j++)
+//            {
+//                std::cout << client[i] << " ";
+//                obj[j].print();
+//                std::cout << std::endl;
+//            }
+            obj[i].print();
+            std::cout << std::endl;
+
         }
 
         char input;
