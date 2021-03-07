@@ -8,13 +8,6 @@
 
 int main()
 {
-//    UnoHand * obj = new UnoHand;
-
-//    obj->insertOne(5, "red");
-//    obj->insertOne(9, "blue");
-////    obj->removeOne(5, "red");
-//    obj->print();
-
     int playerNum;
 
     while (1)
@@ -76,7 +69,7 @@ int main()
             if (obj[i].isEmpty())
             {
                 std::cout << client[i] << " is the winner!" << std::endl;
-                break;
+                return 0;
             }
         }
 
@@ -94,12 +87,6 @@ int main()
                 std::cout << client[i] << " ";
             }
 
-//            for (int j = 0; j < playerNum; j++)
-//            {
-//                std::cout << client[i] << " ";
-//                obj[j].print();
-//                std::cout << std::endl;
-//            }
             obj[i].print();
             std::cout << std::endl;
 
