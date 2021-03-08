@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+std::string colors[4] = {"B", "G", "R", "Y"};
+
 int main()
 {
     int playerNum;
@@ -44,8 +46,6 @@ int main()
 
         count++;
     }
-
-    std::string colors[4] = {"B", "G", "R", "Y"};
 
     srand(time(NULL));
 
@@ -99,12 +99,46 @@ int main()
 
         if (input == 'P')
         {
-            std::cout << "Enter color: ";
-            std::cin >> upColor;
-            std::cout << "Enter value: ";
-            std::cin >> upValue;
+            std::string color;
+            int value;
 
-            obj[turn].removeOne(upValue, upColor);
+            if (obj[turn].find(upValue, upColor))
+            {
+                std::cout << "Enter color: ";
+                std::cin >> color;
+                std::cout << "Enter value: ";
+                std::cin >> value;
+
+                if (color == upColor || value == upValue)
+                {
+                    obj[turn].removeOne(value, color);
+                    upValue = value;
+                    upColor = color;
+                }
+
+                else
+                {
+                    std::cout << "Invalid card! Try again!" << std::endl;
+                    continue;
+                }
+            }
+
+            else
+            {
+                color = colors[rand() % 4];
+                value = rand() % 10;
+                obj[turn].insertOne(rand() % 10, colors[rand() % 4]);
+
+                if (obj[turn].find(upValue, upColor))
+                {
+                    obj[turn].removeOne(value, color);
+                }
+
+                else
+                {
+                    std::cout << "You dont have a required card!" << std::endl;
+                }
+            }
         }
 
         else if (input == 'D')

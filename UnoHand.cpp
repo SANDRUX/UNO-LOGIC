@@ -53,7 +53,7 @@ bool UnoHand::removeOne(int value, const std::string & color)
 
     else
     {
-        while(curr->get_nextCard() != nullptr)
+        while (curr->get_nextCard() != nullptr)
         {
             if (curr->get_nextCard()->get_value() == value && curr->get_nextCard()->get_color() == color)
             {
@@ -69,6 +69,33 @@ bool UnoHand::removeOne(int value, const std::string & color)
         }
     }
 
+    return false;
+}
+
+bool UnoHand::find(int value, const std::string & color)
+{
+    UnoCard * curr = this->first;
+
+    if (this->first == nullptr)
+    {
+        return false;
+    }
+
+    if (this->first->get_value() == value || this->first->get_color() == color)
+    {
+        return true;
+    }
+
+    else
+    {
+        while (curr->get_nextCard() != nullptr)
+        {
+            if (curr->get_nextCard()->get_value() == value || curr->get_nextCard()->get_color() == color)
+            {
+                return true;
+            }
+        }
+    }
     return false;
 }
 
