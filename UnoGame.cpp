@@ -45,7 +45,7 @@ int main()
         count++;
     }
 
-    std::string colors[4] = {"blue", "green", "red", "yellow"};
+    std::string colors[4] = {"B", "G", "R", "Y"};
 
     srand(time(NULL));
 
@@ -73,18 +73,18 @@ int main()
             }
         }
 
-        std::cout << "UP " << upColor << upValue << std::endl;
+        std::cout << "UP: " << upColor << upValue << std::endl;
 
         for (int i = 0; i < playerNum; i++)
         {
             if (i == turn)
             {
-                std::cout << client[i] << " * " << " ";
+                std::cout << client[i] << ": * ";
             }
 
             else
             {
-                std::cout << client[i] << " ";
+                std::cout << client[i] << ": ";
             }
 
             obj[i].print();
@@ -94,7 +94,7 @@ int main()
 
         char input;
 
-        std::cout << "Enter D (Draw) or P(Play): ";
+        std::cout << "Action (D or P): ";
         std::cin >> input;
 
         if (input == 'P')
@@ -110,6 +110,12 @@ int main()
         else if (input == 'D')
         {
             obj[turn].insertOne(rand() % 10, colors[rand() % 4]);
+        }
+
+        else
+        {
+            std::cout << "Invalid Choice!" << std::endl;
+            continue;
         }
 
         turn = (turn + 1) % playerNum;
